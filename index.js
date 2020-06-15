@@ -15,11 +15,10 @@
  * should return 'foofoo'.
 */
 function processFirstItem(stringList, callback) {
-  return callback(stringList[0])
+	return callback(stringList[0]);
 }
 
 // ⭐️ Example Challenge END ⭐️
-
 
 ///// M V P ///////
 
@@ -28,18 +27,26 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * Counter1 returns another function
+ 
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * Counter1 since it's returning another function
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ * Counter1 is better if you need to create multiple counters
+ * Counter2 is more readable and is a good one time solution
  *
 */
 
 // counter1 code
 function counterMaker() {
-  let count = 0;
-  return function counter() {
-   return count++;
-  }
+	let count = 0;
+	return function counter() {
+		return count++;
+	};
 }
 
 const counter1 = counterMaker();
@@ -48,18 +55,18 @@ const counter1 = counterMaker();
 let count = 0;
 
 function counter2() {
-  return count++;
+	return count++;
 }
-
 
 /* Task 2: inning() 
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(/*Code Here*/) {
+	let score = Math.floor(Math.random() * 3);
+	return score;
 
-    /*Code Here*/
-
+	/*Code Here*/
 }
 
 /* Task 3: finalScore()
@@ -74,13 +81,21 @@ finalScore(inning, 9) might return:
   "Away": 5,
 }
 
-*/ 
+*/
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(callback, num) {
+	let final = { home: 0, away: 0 };
+	for (let i = 0; i < num; i++) {
+		let score = callback();
+		final['home'] += score;
+		score = callback();
+		final['away'] += score;
+	}
+	return final;
 }
+/*Code Here*/
+
+console.log(finalScore(inning, 3));
 
 /* Task 4: 
 
@@ -103,8 +118,16 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(callback,num) {
+  let score1 = callback()
+  let score2 = callback()
+  for(let i = 1; i <= num; i++){
+
+    console.log(`${i}st inning: ${score1} - ${score2}`)
+
+  }
+
+	/* CODE HERE */
 }
 
-
+console.log(scoreboard(inning,3))
