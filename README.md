@@ -63,8 +63,13 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+personalDice is returning another function
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+The name will stay the same while the dice roll could change
 c. What is the lexical scope of `newRoll`? 
+newRoll belongs to the anonymous function
+
 
 ### Task 2c - Exit Ticket
 
